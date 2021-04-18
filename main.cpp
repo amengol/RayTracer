@@ -4,6 +4,7 @@
 #include "hittable_list.h"
 #include "sphere.h"
 #include "camera.h"
+#include <chrono>
 
 #include <iostream>
 
@@ -28,6 +29,9 @@ color ray_color(const ray& r, const hittable& world, int depth)
 
 int main()
 {
+    // Start timer
+    auto begin = std::chrono::steady_clock::now();
+
     // Image
     constexpr double aspect_ratio = 16.0/9.0;
     constexpr int image_width = 400;
@@ -62,5 +66,11 @@ int main()
         }
     }
 
-    std::cerr << "\nDone.\n";
+    //Elapsed time
+    auto end = std::chrono::steady_clock::now();
+    std::cerr << "\nElapsed time = " 
+    << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count()
+    << " ms" << std::endl;
+
+    std::cerr << "Done.\n";
 }
