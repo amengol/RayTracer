@@ -64,6 +64,13 @@ public:
     {
         return vec3(random_double(min, max), random_double(min, max), random_double(min, max));
     }
+
+    // Returns true if the vector is close to zero in all dimensions.
+    bool near_zero()
+    {
+        const double s = 1e-8;
+        return (fabs(e[0] < s) && fabs(e[1] < s) && fabs(e[2] < s));
+    }
 };
 
 using point3 = vec3;
@@ -145,5 +152,10 @@ using color = vec3;
             return in_unit_sphere;
         else
             return -in_unit_sphere;
+    }
+
+    inline vec3 reflect(const vec3& v, const vec3& n)
+    {
+        return v - 2*dot(v,n)*n;
     }
     

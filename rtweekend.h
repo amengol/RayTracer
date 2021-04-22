@@ -1,4 +1,5 @@
-#pragma once
+#ifndef RTWEEKEND_H
+#define RTWEEKEND_H
 
 #include <cmath>
 #include <limits>
@@ -35,3 +36,5 @@ inline double random_double(double min, double max)
 
 #include "ray.h"
 #include "vec3.h"
+
+#endif
